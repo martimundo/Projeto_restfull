@@ -5,6 +5,7 @@
 const express = require('express');
 const consign = require('consign');
 const bodyParser = require('body-parser');
+const { query, validationResult } = require('express-validator');
 
 //let routesIndex = require('./routes/index');
 //let routesUsers = require('./routes/users');

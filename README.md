@@ -32,4 +32,8 @@ express.
 7º - Para armazenar os dados referente a aplicação futura, vamos utillizar o NeBD. NeDB é um banco dados construido
 em JS.
     Para instalar o NeDB vamos usar o seguinte comando: npm install nedb --save.
+
 8º - Sempre que formar trabalhar com rest ou restfull API precisamos programas as rotas e metodos dependendo da ação.
+
+9º - Para realizar validações de dados foi utilizado o express validator. Para instala-lo, usaremos o comando:
+    npm install express-validator --save

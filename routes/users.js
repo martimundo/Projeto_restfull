@@ -2,6 +2,7 @@
  * Integrando a aplicação com o NeDB para salvar os dados via
  */
 
+const { validationResult } = require('express-validator');
 let NeDB = require('nedb');
 let db = new NeDB({
     filename: 'user.db',
@@ -90,20 +91,32 @@ module.exports = (app) => {
         });
 
     })
-    route.post((req, res) => {
+    route.post(
+        [
+            check('name', 'O nome é obrigatório!').notEmpty(),
+            check('email', 'O e-mail esta invalido!').notEmpty().isEmail(),
+        ], (req, res) => {
 
-        //o bady vai pegar os dados do formulário
-        //res.json(req.body);
+            let errors = validationResult(req);
 
-        //salvando dados no db...
-        db.insert(req.body, (err, user) => {
-            if (err) {
-                app.utils.error.send(err, req, res);
+            if (errors) {
 
-            } else {
-                res.status(200).json(user);
+                app.utils.error.send(errors, req, res);
+                return false;
             }
-        });
+            //o bady vai pegar os dados do formulário
+            //res.json(req.body);
 
-    });
+            //salvando dados no db...
+            db.insert(req.body, (err, user) => {
+                if (err) {
+
+                    app.utils.error.send(err, req, res);
+
+                } else {
+                    res.status(200).json(user);
+                }
+            });
+
+        });
 };
