@@ -6,6 +6,7 @@ São anotações e orientações para futuros testes e treinamento de conhecimen
 
 
 Para criar um arquivo em json para instalação das dependências utilizamos os seguintes passos:
+
 1º - Na linha de comando dentro da pasta do projeto, digitamos o código: npm init
     Após digitar o npm init, seguimos os passos para criar o arquivo package.json...
 2º - Com esses comandos as dependências estarão dentro do package.json..
